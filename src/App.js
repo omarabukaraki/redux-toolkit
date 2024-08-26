@@ -1,8 +1,30 @@
-import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrement, increment } from './counterSlice';
+import AuthComponentT from './AuthComponentT';
+import PostsComponent from './PostsComponent';
+
 
 function App() {
+  const dispatch = useDispatch();
+  const selector = useSelector(state => state.counter.value);
+   
   return (
-    <h1>omar abu karaki</h1>
+  <>
+    {/* <div style={{display:'flex'}}>
+      <button onClick={()=>{
+        dispatch(decrement());
+      }} style={{ margin: '10px' }}>-</button>
+      <h1>{selector}</h1>
+      <button onClick={()=>{
+        dispatch(increment());
+      }} style={{ margin: '10px' }}>+</button>
+    </div>
+    <AuthComponentT/> */}
+    <PostsComponent/>
+    
+     
+
+  </>
   );
 }
 
