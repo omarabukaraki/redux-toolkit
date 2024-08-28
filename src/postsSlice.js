@@ -1,14 +1,12 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {  createSlice } from "@reduxjs/toolkit";
+import { getAllPosts } from "./apiUsers";
 
 const initialState = {
     posts: [],
+    isLoading:false,
+    error:false,
 };
 
-export const getAllPosts = createAsyncThunk('posts/getAll', async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const data = await res.json();
-    return data; 
-});
 
 export const postsSlice = createSlice({
     name: 'posts',
@@ -17,15 +15,15 @@ export const postsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getAllPosts.pending, (state,action) => {
-                console.log(action)
+            .addCase(getAllPosts.pending, (state) => {
+                state.isLoading = true;
             })
             .addCase(getAllPosts.fulfilled, (state, action) => {
                 state.posts = action.payload;
-                console.log(action)
+                state.isLoading = false;
             })
             .addCase(getAllPosts.rejected, (state, action) => {
-                console.log(action)
+                state.error = action.error;
             });
     }
 });
