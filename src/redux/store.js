@@ -1,13 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './counterSlice'
-import authReducer from './authSlice'
-import postsReducer from './postsSlice'
+import { apiSlice } from '../feature/api/apiSlice'
+// import counterReducer from './counterSlice'
+// import authReducer from './authSlice'
+// import postsReducer from './postsSlice'
 
 export const store = configureStore({
   reducer: {
-    counter : counterReducer,
-    auth: authReducer,
-    posts: postsReducer
+    // counter : counterReducer,
+    // auth: authReducer,
+    // posts: postsReducer
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
-  devTools:true
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+  devTools: true
 })

@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from './redux/counterSlice';
 import AuthComponentT from './components/AuthComponentT';
 import PostsComponent from './components/PostsComponent';
+import UsersComponent from './components/UsersComponent';
 
 
 function App() {
-  const dispatch = useDispatch();
-  const selector = useSelector(state => state.counter.value);
+  // const dispatch = useDispatch();
+  // const selector = useSelector(state => state.counter.value);
    
   return (
   <>
@@ -20,9 +21,9 @@ function App() {
       }} style={{ margin: '10px' }}>+</button>
     </div>
     <AuthComponentT/> */}
-    <PostsComponent/>
+    {/* <PostsComponent/> */}
     
-     
+     <UsersComponent/>
 
   </>
   );
