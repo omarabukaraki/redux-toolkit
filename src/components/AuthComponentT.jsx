@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { login, logout } from './authSlice'
+import { login, logout } from '../redux/authSlice'
 import { useDispatch, useSelector } from 'react-redux';
 
 const AuthComponentT = () => {

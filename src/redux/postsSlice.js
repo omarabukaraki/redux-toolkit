@@ -1,10 +1,12 @@
-import {  createSlice } from "@reduxjs/toolkit";
-import { getAllPosts } from "./apiUsers";
+import { createSlice } from "@reduxjs/toolkit";
+import { createPost, deletePost, getAllPosts } from "./apiUsers";
 
 const initialState = {
     posts: [],
-    isLoading:false,
-    error:false,
+    isLoading: false,
+    error: false,
+    postCreated: false,
+    postCreateLoading: false,
 };
 
 
@@ -24,6 +26,13 @@ export const postsSlice = createSlice({
             })
             .addCase(getAllPosts.rejected, (state, action) => {
                 state.error = action.error;
+            }).addCase(createPost.pending, (state) => {
+                state.postCreateLoading = true;
+                state.postCreated=true;
+            }).addCase(createPost.fulfilled, (state, action) => {
+                state.postCreated = action.payload;
+            }).addCase(createPost.rejected, (state) => {
+                state.postCreated = false;
             });
     }
 });

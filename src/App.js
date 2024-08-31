@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment } from './counterSlice';
-import AuthComponentT from './AuthComponentT';
-import PostsComponent from './PostsComponent';
+import { decrement, increment } from './redux/counterSlice';
+import AuthComponentT from './components/AuthComponentT';
+import PostsComponent from './components/PostsComponent';
 
 
 function App() {
